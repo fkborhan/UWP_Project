@@ -1,0 +1,150 @@
+﻿<Page
+    x:Class="MonthlyProject.BlankPage5"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MonthlyProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Style="{StaticResource MasterViewGridStyle}">
+        <ListView x:Name="ItemListView" Margin="0,0,0,8" Width="Auto" Height="Auto" BorderThickness="0" VerticalAlignment="Stretch" HorizontalAlignment="Left"
+
+                                ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+
+            <ListView.ItemsPanel>
+
+                <ItemsPanelTemplate >
+
+                    <StackPanel Margin="0,0,0,0" Width="Auto"/>
+
+                </ItemsPanelTemplate>
+
+            </ListView.ItemsPanel>
+
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <Grid HorizontalAlignment="Stretch" Width="Auto" Height="Auto" Margin="20,0,0,0">
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="Auto"/>
+
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Border  Margin="0,8,0,8" Width="50" Height="50" HorizontalAlignment="Left" VerticalAlignment="Center">
+
+                            <Image Source="{Binding IMAGE}" Margin="0" Stretch="Fill" Width="50" Height="50"/>
+
+                        </Border>
+
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Margin="10,8,0,0">
+
+                            <TextBlock Text="{Binding ITEMNAME}" FontSize="25"  Width="400"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+
+
+
+
+
+
+            
+        </ListView>
+
+        <ScrollViewer x:Name="DetailView" Margin="500,0,0,0" Grid.RowSpan="2" Grid.Column="1" RenderTransformOrigin="0.5,0.5" VerticalScrollBarVisibility="Auto">
+
+            <ScrollViewer.RenderTransform>
+
+                <CompositeTransform/>
+
+            </ScrollViewer.RenderTransform>
+
+            <StackPanel x:Name="ContentPanelDetail" HorizontalAlignment="Stretch" Orientation="Vertical" Margin="10,0,0,0" DataContext="{Binding SelectedItem, ElementName=ItemListView}"  Width="1000">
+
+                <StackPanel x:Name="HeaderElements"  Orientation="Horizontal">
+
+                    <StackPanel x:Name="HeaderStackPanel" Orientation="Vertical" VerticalAlignment="Center" Width="1000" HorizontalAlignment="Left"  >
+                        <TextBlock Text="ITEM CODE:" Style="{StaticResource MDLabel}" />
+                        <Border BorderBrush="Red" BorderThickness="2" CornerRadius="1">
+                            <TextBlock Text="{Binding ITEMCODE}" MaxHeight="80" FontSize="30" HorizontalAlignment="Left"  Margin="0" />
+                        </Border>
+                        <StackPanel Orientation="Horizontal" Width="1000">
+                            <TextBlock Text="Book Name:" Style="{StaticResource MDLabel}" />
+                            <Border BorderBrush="DarkGray" BorderThickness="2" CornerRadius="1">
+                            <TextBlock Text="{Binding ITEMNAME}" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Top"  TextTrimming="WordEllipsis"  Width="1000"  Margin="0" TextWrapping="Wrap"/>
+                            </Border>
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Catagory:" Style="{StaticResource MDLabel}" />
+                    <Border BorderBrush="DarkGray" BorderThickness="2" CornerRadius="1">
+                        <TextBlock FontSize="30" Text="{Binding CATAGORY}" HorizontalAlignment="Left"  Width="500"  Height="Auto" TextWrapping="Wrap"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Purchase Price:" Style="{StaticResource MDLabel}" />
+                    <Border BorderBrush="DarkGray" BorderThickness="2" CornerRadius="1">
+                        <TextBlock FontSize="30" Text="{Binding PURCHASEPRICE}" HorizontalAlignment="Left" Width="500"  Height="Auto" TextWrapping="Wrap"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Sales Price:" Style="{StaticResource MDLabel}" />
+                    <Border BorderBrush="DarkGray" BorderThickness="2" CornerRadius="1">
+                        <TextBlock FontSize="30" Text="{Binding SALESPRICE}" HorizontalAlignment="Left" Width="500"  Height="Auto" TextWrapping="Wrap"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock  Text="Quantity:" Style="{StaticResource MDLabel}" />
+                    <Border BorderBrush="DarkGray" BorderThickness="2" CornerRadius="1">
+                        <TextBlock FontSize="30" Text="{Binding QTY}" HorizontalAlignment="Left"  Width="500"  Height="Auto" TextWrapping="Wrap"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Purchase Date:" Style="{StaticResource MDLabel}" />
+                    <Border BorderBrush="DarkGray" BorderThickness="2" CornerRadius="1">
+                                        <TextBlock FontSize="30" Text="{Binding EXPIREDATE}" HorizontalAlignment="Left"  Width="500"  Height="Auto" TextWrapping="Wrap"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Picture:" Style="{StaticResource MDLabel}" />
+                    <Border BorderBrush="DarkGray" BorderThickness="2" CornerRadius="1">
+                        <Image Source="{Binding IMAGE}" Margin="0" Stretch="Fill" Width="100" Height="100"/>
+                    </Border>
+
+                </StackPanel>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+
+    </Grid>
+
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="mdetails"
+Label="MasterDetails" Content="Main Page" Click="dowork3"/>
+            <AppBarButton x:Name="ListMe"
+Label="ListView" Content="List View" Click="dowork2"/>
+            <AppBarButton x:Name="Insert"
+Label="Add New" Content="Add New" Click="dowork"/>
+            
+        </CommandBar>
+    </Page.TopAppBar>
+
+</Page>
